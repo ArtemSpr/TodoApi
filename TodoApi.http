@@ -23,3 +23,16 @@ Content-Type: application/json
     "name": "Test task",
     "isComplete": false
 }
+
+### User adding
+POST http://localhost:5059/api/User
+Content-Type: application/json
+
+{
+    "userName": "testuser",
+    "password": "1234"
+}
+
+### User check
+GET http://localhost:5059/api/User?username=testuser&password=1234
+
