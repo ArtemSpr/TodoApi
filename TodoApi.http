@@ -11,3 +11,15 @@ Content-Type: application/json
 {
   "name": "не забудь фрукти"
 }
+###
+GET http://localhost:5059/api/todoitems
+
+###
+
+POST https://localhost:5059/api/todoitems
+Content-Type: application/json
+
+{
+    "name": "Test task",
+    "isComplete": false
+}

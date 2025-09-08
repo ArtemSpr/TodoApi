@@ -8,31 +8,38 @@ using TodoApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-
 builder.Services.Configure<AzureAdOptions>(
     builder.Configuration.GetSection("AzureAd"));
 
-// Реєстрація DbContext з Azure AD токеном для запуску
 builder.Services.AddDbContext<TodoContext>((sp, options) =>
 {
     var config = sp.GetRequiredService<IConfiguration>();
-    var azureAd = sp.GetRequiredService<IOptions<AzureAdOptions>>().Value;
-    var connectionString = config.GetConnectionString("SqlServer");
 
-    var credential = new ClientSecretCredential(
-        azureAd.TenanId,
-        azureAd.ClientId,
-        azureAd.ClientSecret);
-
-    var token = credential.GetToken(
-        new TokenRequestContext(new[] { "https://database.windows.net/.default" }));
-
-    var conn = new SqlConnection(connectionString)
+    if (builder.Environment.IsDevelopment())
     {
-        AccessToken = token.Token
-    };
+        // Використовуємо SQL login для міграцій і локальної розробки
+        options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+    }
+    else
+    {
+        // Використовуємо Azure AD токен на продакшн
+        var azureAd = sp.GetRequiredService<IOptions<AzureAdOptions>>().Value;
 
-    options.UseSqlServer(conn);
+        var credential = new ClientSecretCredential(
+            azureAd.TenantId,
+            azureAd.ClientId,
+            azureAd.ClientSecret);
+
+        var token = credential.GetToken(
+            new TokenRequestContext(new[] { "https://database.windows.net/.default" }));
+
+        var conn = new SqlConnection(config.GetConnectionString("DefaultConnectionAzureAD"))
+        {
+            AccessToken = token.Token
+        };
+
+        options.UseSqlServer(conn);
+    }
 });
 
 builder.Services.AddEndpointsApiExplorer();
@@ -53,10 +60,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-app.UseAuthentication();
-
 app.MapControllers();
-
 app.Run();

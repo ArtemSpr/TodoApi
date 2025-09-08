@@ -1,6 +1,6 @@
 public class AzureAdOptions
 {
-    public string TenanId { get; set; }
-    public string ClientId { get; set; }
-    public string ClientSecret { get; set; }
+    public required string TenantId { get; set; }
+    public required string ClientId { get; set; }
+    public required string ClientSecret { get; set; }
 }
