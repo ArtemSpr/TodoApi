@@ -16,7 +16,7 @@ GET http://localhost:5059/api/todoitems
 
 ###
 
-POST https://localhost:5059/api/todoitems
+POST http://localhost:5059/api/todoitems
 Content-Type: application/json
 
 {
