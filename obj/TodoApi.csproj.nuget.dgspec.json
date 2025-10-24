@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/s2401573/Documents/GitHub/TodoApiNet24s/src/TodoApi/TodoApi.csproj": {}
+    "/Users/s2401573/Documents/portfolio/ohjelmistokehittajana-toimiminen/aspnet-perusteet/TodoApi/TodoApi.csproj": {}
   },
   "projects": {
-    "/Users/s2401573/Documents/GitHub/TodoApiNet24s/src/TodoApi/TodoApi.csproj": {
+    "/Users/s2401573/Documents/portfolio/ohjelmistokehittajana-toimiminen/aspnet-perusteet/TodoApi/TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/s2401573/Documents/GitHub/TodoApiNet24s/src/TodoApi/TodoApi.csproj",
+        "projectUniqueName": "/Users/s2401573/Documents/portfolio/ohjelmistokehittajana-toimiminen/aspnet-perusteet/TodoApi/TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "/Users/s2401573/Documents/GitHub/TodoApiNet24s/src/TodoApi/TodoApi.csproj",
+        "projectPath": "/Users/s2401573/Documents/portfolio/ohjelmistokehittajana-toimiminen/aspnet-perusteet/TodoApi/TodoApi.csproj",
         "packagesPath": "/Users/s2401573/.nuget/packages/",
-        "outputPath": "/Users/s2401573/Documents/GitHub/TodoApiNet24s/src/TodoApi/obj/",
+        "outputPath": "/Users/s2401573/Documents/portfolio/ohjelmistokehittajana-toimiminen/aspnet-perusteet/TodoApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/s2401573/.nuget/NuGet/NuGet.Config"
